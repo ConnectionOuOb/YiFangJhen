@@ -34,7 +34,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   double translateX = 0;
   double translateY = 0;
-  double windowScale = 1;
+  double windowScale = 2;
 
   @override
   Widget build(BuildContext context) {

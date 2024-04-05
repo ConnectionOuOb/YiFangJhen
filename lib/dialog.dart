@@ -44,7 +44,7 @@ Widget popUpImage(BuildContext context, PopImage popImage) {
               ],
             );
           },
-        ),
+        ), /*
         actionsAlignment: MainAxisAlignment.center,
         actions: [
           Text2Speech(
@@ -55,7 +55,7 @@ Widget popUpImage(BuildContext context, PopImage popImage) {
               });
             },
           ),
-        ],
+        ],*/
       );
     },
   );
