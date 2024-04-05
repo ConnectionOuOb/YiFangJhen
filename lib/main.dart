@@ -44,10 +44,8 @@ class _MainPageState extends State<MainPage> {
     double imageRatio = imageWidth / imageHeight;
     double needWidth = screenSize.height * imageRatio;
     double needHeight = screenSize.width / imageRatio;
-    double scaledWidth =
-        needWidth > screenSize.width ? screenSize.width : needWidth;
-    double scaledHeight =
-        needHeight < screenSize.height ? needHeight : screenSize.height;
+    double scaledWidth = needWidth > screenSize.width ? screenSize.width : needWidth;
+    double scaledHeight = needHeight < screenSize.height ? needHeight : screenSize.height;
     double anchorX = (screenSize.width - scaledWidth) / 2;
     double anchorY = (screenSize.height - scaledHeight) / 2;
     double imageScaleWidth = scaledWidth / imageWidth;
@@ -88,8 +86,7 @@ class _MainPageState extends State<MainPage> {
                           },
                         );
                       },
-                      child: Container(
-                          color: Colors.purpleAccent.withOpacity(0.3)),
+                      child: Container(color: Colors.purpleAccent.withOpacity(0.3)),
                     ),
                   );
                 }).toList(),
