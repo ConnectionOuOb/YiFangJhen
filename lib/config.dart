@@ -4,14 +4,14 @@ double factor = 1;
 String tabName = '易方陣';
 List<PopImage> popImages = [
   // ### 1.
-  PopImage(203, 405, 200, 260, 'reference/1-1.jpg', '剛健自強', ''),
+//  PopImage(203, 405, 200, 260, 'reference/1-1.jpg', '剛健自強', ''),
   PopImage(483, 405, 200, 260, 'reference/1-2.jpg', '果斷決定', ''),
   PopImage(762, 405, 200, 260, 'reference/1-3.jpg', '大有可容', ''),
   PopImage(1040, 405, 200, 260, 'reference/1-4.jpg', '大壯震動', ''),
   PopImage(1319, 405, 200, 260, 'reference/1-5.jpg', '小處修補', ''),
   PopImage(1597, 405, 200, 260, 'reference/1-6.jpg', '需安以待', ''),
   PopImage(1875, 405, 200, 260, 'reference/1-7.jpg', '大大整備', ''),
-  PopImage(2150, 405, 200, 260, 'reference/1-8.jpg', '合泰安順', ''),
+//  PopImage(2150, 405, 200, 260, 'reference/1-8.jpg', '合泰安順', ''),
 
   // ### 2.
   PopImage(203, 780, 200, 260, 'reference/2-1.jpg', '行動合理', ''),
