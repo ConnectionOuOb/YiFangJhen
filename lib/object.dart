@@ -1,5 +1,5 @@
 class PopImage {
-  bool isShow = false;
+  bool isShow = true;
   double x, y, width, height;
   String path2Image;
   String imageName;
