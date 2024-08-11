@@ -1,4 +1,10 @@
-# 易方陣
+# 易方陣 / YiFangJhen
+### An E-textbook for NYCU EMBA
 
-## Build command
-```flutter build web```
+### [Demo](https://connectionouob.github.io/YiFangJhen/)
+
+## Download
+- ```git clone https://github.com/ConnectionOuOb/YiFangJhen.git```
+
+## Build
+- ```flutter build web```
