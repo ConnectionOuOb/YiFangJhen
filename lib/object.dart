@@ -4,6 +4,7 @@ class PopImage {
   String path2Image;
   String imageName;
   String imageText;
+  List<String> prompts;
 
   PopImage(
     this.x,
@@ -13,5 +14,6 @@ class PopImage {
     this.path2Image,
     this.imageName,
     this.imageText,
+    this.prompts,
   );
 }
