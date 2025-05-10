@@ -1,6 +1,7 @@
 import 'config.dart';
 import 'dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 void main() {
@@ -44,52 +45,66 @@ class _MainPageState extends State<MainPage> {
     double imageRatio = imageWidth / imageHeight;
     double needWidth = screenSize.height * imageRatio;
     double needHeight = screenSize.width / imageRatio;
-    double scaledWidth = needWidth > screenSize.width ? screenSize.width : needWidth;
-    double scaledHeight = needHeight < screenSize.height ? needHeight : screenSize.height;
+    double scaledWidth =
+        needWidth > screenSize.width ? screenSize.width : needWidth;
+    double scaledHeight =
+        needHeight < screenSize.height ? needHeight : screenSize.height;
     double anchorX = (screenSize.width - scaledWidth) / 2;
     double anchorY = (screenSize.height - scaledHeight) / 2;
     double imageScaleWidth = scaledWidth / imageWidth;
     double imageScaleHeight = scaledHeight / imageHeight;
     return Scaffold(
-      body: GestureDetector(
-        onPanUpdate: (details) {
-          setState(() {
-            translateX += details.delta.dx;
-            translateY += details.delta.dy;
-          });
+      body: Listener(
+        onPointerSignal: (pointerSignal) {
+          if (pointerSignal is PointerScrollEvent) {
+            setState(() {
+              double scaleChange = pointerSignal.scrollDelta.dy * -0.001;
+              windowScale += scaleChange;
+              if (windowScale < 0.1) windowScale = 0.1;
+            });
+          }
         },
-        child: Transform.scale(
-          scale: windowScale,
-          child: Transform.translate(
-            offset: Offset(translateX, translateY),
-            child: Container(
-              alignment: Alignment.center,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("background/MainView.png"),
-                  fit: BoxFit.contain,
+        child: GestureDetector(
+          onPanUpdate: (details) {
+            setState(() {
+              translateX += details.delta.dx;
+              translateY += details.delta.dy;
+            });
+          },
+          child: Transform.scale(
+            scale: windowScale,
+            child: Transform.translate(
+              offset: Offset(translateX, translateY),
+              child: Container(
+                alignment: Alignment.center,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("background/MainView.png"),
+                    fit: BoxFit.contain,
+                  ),
                 ),
-              ),
-              child: Stack(
-                children: popImages.map((e) {
-                  return Positioned(
-                    left: e.x * imageScaleWidth + anchorX,
-                    top: e.y * imageScaleHeight + anchorY,
-                    width: e.width * imageScaleWidth,
-                    height: e.height * imageScaleHeight,
-                    child: GestureDetector(
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return popUpImage(context, e);
-                          },
-                        );
-                      },
-                      child: Container(color: Colors.purpleAccent.withOpacity(0.3)),
-                    ),
-                  );
-                }).toList(),
+                child: Stack(
+                  children: popImages.map((e) {
+                    return Positioned(
+                      left: e.x * imageScaleWidth + anchorX,
+                      top: e.y * imageScaleHeight + anchorY,
+                      width: e.width * imageScaleWidth,
+                      height: e.height * imageScaleHeight,
+                      child: GestureDetector(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return popUpImage(context, e);
+                            },
+                          );
+                        },
+                        child: Container(
+                            color: Colors.purpleAccent.withOpacity(0.3)),
+                      ),
+                    );
+                  }).toList(),
+                ),
               ),
             ),
           ),
