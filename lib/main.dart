@@ -79,7 +79,7 @@ class _MainPageState extends State<MainPage> {
                 alignment: Alignment.center,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("background/MainView.png"),
+                    image: AssetImage("assets/background/MainView.png"),
                     fit: BoxFit.contain,
                   ),
                 ),
